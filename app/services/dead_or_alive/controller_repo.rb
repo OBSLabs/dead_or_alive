@@ -4,11 +4,11 @@ class DeadOrAlive::ControllerRepo
   end
 
   def actions(since=1.week.ago)
-    iterate(range(since),ActionRecord)
+    iterate_and_sort(range(since),ActionRecord)
   end
 
   def controllers(since=1.week.ago)
-    iterate(range(since),ControllerRecord)
+    iterate_and_sort(range(since),ControllerRecord)
   end
 
   protected
@@ -28,9 +28,18 @@ class DeadOrAlive::ControllerRepo
     end
   end
 
+  def iterate_and_sort(range,klass)
+    iterate(range,klass).to_a.sort_by(&:last).reverse.map do |(k,v)|
+      ReportItem.new(k,v)
+    end
+  end
+
   def range(since)
     t = since.to_date
     t.upto(Time.now.to_date).to_a
+  end
+
+  class ReportItem < Struct.new(:name, :count)
   end
 
   class BaseRepo < Struct.new(:redis,:controller, :action, :ts)
@@ -69,6 +78,8 @@ class DeadOrAlive::ControllerRepo
   end
 
   class << self
-    attr_accessor :redis
+    def redis
+      DeadOrAlive.redis
+    end
   end
 end

@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <table>
+      <tr>
+        <th> Action </th>
+        <th> # </th>
+      </tr>
+      <% @actions.each do |action| %>
+        <tr>
+          <td><%=action.name %></td>
+          <td><%=action.count %></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>
