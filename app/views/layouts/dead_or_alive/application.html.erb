@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>DeadOrAlive</title>
-  <%= stylesheet_link_tag    "dead_or_alive/application", :media => "all" %>
-  <%= javascript_include_tag "dead_or_alive/application" %>
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <div class='container'>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

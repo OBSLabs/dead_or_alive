@@ -3,11 +3,11 @@ class DeadOrAlive::ControllerRepo
     subjects(controller,action,ts).each(&:incr!)
   end
 
-  def actions(since=1.week.ago)
+  def actions(since=1.week)
     iterate_and_sort(range(since),ActionRecord)
   end
 
-  def controllers(since=1.week.ago)
+  def controllers(since=1.week)
     iterate_and_sort(range(since),ControllerRecord)
   end
 
@@ -35,7 +35,7 @@ class DeadOrAlive::ControllerRepo
   end
 
   def range(since)
-    t = since.to_date
+    t = (Time.now - since).to_date
     t.upto(Time.now.to_date).to_a
   end
 

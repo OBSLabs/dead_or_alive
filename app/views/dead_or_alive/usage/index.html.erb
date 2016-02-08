@@ -1,16 +1,21 @@
-<html>
-  <body>
-    <table>
-      <tr>
-        <th> Action </th>
-        <th> # </th>
-      </tr>
-      <% @actions.each do |action| %>
-        <tr>
-          <td><%=action.name %></td>
-          <td><%=action.count %></td>
-        </tr>
-      <% end %>
-    </table>
-  </body>
-</html>
+
+<br/>
+<ul>
+   <%=link_to "Today", params.merge(since: 0) %> |
+   <%=link_to "1 week", params.merge(since: 7) %> |
+   <%=link_to "2 weeks", params.merge(since: 14) %> |
+   <%=link_to "1 month", params.merge(since: 30) %>
+</ul>
+
+<table class='table table-striped'>
+  <tr>
+    <th> Action </th>
+    <th> # </th>
+  </tr>
+  <% @actions.each do |action| %>
+    <tr>
+      <td><%=action.name %></td>
+      <td><%=action.count %></td>
+    </tr>
+  <% end %>
+</table>
