@@ -6,15 +6,18 @@ The purpose of this project is provide an interactive dashboard on code usage (C
 === installation:
 
 Add to Gemfile
+
 `gem 'dead_or_alive', git: "git@github.com:OBSLabs/dead_or_alive.git"`
 
 Add to ApplicationController:
+
 ```
 include DeadOrAlive::ControllerMethods
 before_filter :track_action_usage
 ```
 
 Add to sidekiq initializer:
+
 ```
   Sidekiq.configure_server do |config|
     config.server_middleware do |chain|
@@ -22,7 +25,8 @@ Add to sidekiq initializer:
     end
   end
 ```
- Add to routes:
+
+Add to routes:
 `mount DeadOrAlive::Engine => 'dead_or_alive'`
 
 Now dashboard is mounted as /dead_or_alive
