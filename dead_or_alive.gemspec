@@ -7,11 +7,11 @@ require "dead_or_alive/version"
 Gem::Specification.new do |s|
   s.name        = "dead_or_alive"
   s.version     = DeadOrAlive::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of DeadOrAlive."
-  s.description = "TODO: Description of DeadOrAlive."
+  s.authors     = ["Alexander Petrov"]
+  s.email       = ["apetrov@virool.com"]
+  s.homepage    = "https://github.com/OBSLabs/dead_or_alive"
+  s.summary     = "Keep track of adapters"
+  s.description = "Keep track of adapters usage"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
