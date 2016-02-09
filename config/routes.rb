@@ -1,4 +1,5 @@
 DeadOrAlive::Engine.routes.draw do
-  root to: 'usage#index'
-  get 'usage/index',      controller: :usage, action: :index
+  root to: 'usage#actions'
+  get 'usage/actions',      controller: :usage, action: :actions
+  get 'usage/workers',      controller: :usage, action: :workers
 end

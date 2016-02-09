@@ -3,6 +3,14 @@ class DeadOrAlive::ControllerRepo
     subjects(controller,action,ts).each(&:incr!)
   end
 
+  def worker!(worker, ts = Time.now)
+    WorkerRecord.new(self.class.redis, worker, nil, ts).incr!
+  end
+
+  def workers(since=1.week)
+    iterate_and_sort(range(since),WorkerRecord)
+  end
+
   def actions(since=1.week)
     iterate_and_sort(range(since),ActionRecord)
   end
@@ -54,6 +62,16 @@ class DeadOrAlive::ControllerRepo
 
     def timestamp
       ts.strftime("%Y-%m-%d")
+    end
+  end
+
+  class WorkerRecord < BaseRepo
+    def key
+      "alive:#{timestamp}:workers"
+    end
+
+    def member
+      controller
     end
   end
 

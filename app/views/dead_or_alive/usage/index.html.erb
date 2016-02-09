@@ -1,10 +1,14 @@
 
 <br/>
 <ul>
+   <%=link_to "Actions", params.merge(action: :actions) %> |
+   <%=link_to "Workers", params.merge(action: :workers) %>
+   (
    <%=link_to "Today", params.merge(since: 0) %> |
    <%=link_to "1 week", params.merge(since: 7) %> |
    <%=link_to "2 weeks", params.merge(since: 14) %> |
    <%=link_to "1 month", params.merge(since: 30) %>
+   )
 </ul>
 
 <table class='table table-striped'>
